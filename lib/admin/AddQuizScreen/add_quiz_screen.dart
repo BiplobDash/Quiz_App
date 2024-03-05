@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:main_project/services/database.dart';
 
 class AddQuizScreen extends StatefulWidget {
   const AddQuizScreen({super.key});
@@ -17,6 +18,37 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
 
   final List<String> items = ['Railway', 'LGED'];
   String? value;
+
+  uploadItem() async {
+    if (questionController.text != "" &&
+        option1Controller.text != "" &&
+        option2Controller.text != "" &&
+        option3Controller.text != "" &&
+        option4Controller.text != "") {
+      Map<String, dynamic> addQuiz = {
+        'question': questionController.text,
+        'option1': option1Controller.text,
+        'option2': option2Controller.text,
+        'option3': option3Controller.text,
+        'option4': option4Controller.text,
+        'correct': currectAnswerController.text,
+      };
+      await DatabaseMethod().addQuizCategory(addQuiz, value!).then((value) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Quiz has been added Successfully',
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +124,9 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
             const SizedBox(
               height: 20,
             ),
-            _buttonWidget(() {}),
+            _buttonWidget(() {
+              uploadItem();
+            }),
           ],
         ),
       ),
