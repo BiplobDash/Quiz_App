@@ -16,7 +16,7 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
   TextEditingController option4Controller = TextEditingController();
   TextEditingController currectAnswerController = TextEditingController();
 
-  final List<String> items = ['Railway', 'LGED'];
+  final List<String> items = ['Physics', 'Chemistry', 'Math', 'Biology'];
   String? value;
 
   uploadItem() async {
@@ -45,6 +45,12 @@ class _AddQuizScreenState extends State<AddQuizScreen> {
             ),
           ),
         );
+        questionController.clear();
+        option1Controller.clear();
+        option2Controller.clear();
+        option3Controller.clear();
+        option4Controller.clear();
+        currectAnswerController.clear();
       });
     }
   }

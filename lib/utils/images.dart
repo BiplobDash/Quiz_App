@@ -7,4 +7,8 @@ class ImagePath {
   static String objectsImage = 'images/objects.svg';
   static String randomImage = 'images/random.svg';
   static String ronaldoImage = 'images/ronaldo.jpg';
+  static String physicsImage = 'images/physics.svg';
+  static String chemistryImage = 'images/chemistry.svg';
+  static String mathImage = 'images/math.svg';
+  static String biologyImage = 'images/biology.svg';
 }

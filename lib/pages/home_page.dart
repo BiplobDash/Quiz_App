@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:main_project/pages/question.dart';
 import 'package:main_project/utils/images.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,30 +42,75 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 20,
             ),
-            _rowWidget(
-              image1: ImagePath.placeImage,
-              image2: ImagePath.dogImage,
-              title1: 'Place',
-              title2: 'Animals',
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _commonWidget(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contex) =>
+                            const Question(category: 'Physics'),
+                      ),
+                    );
+                  }, ImagePath.physicsImage, 'Physics'),
+                  _commonWidget(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contex) =>
+                            const Question(category: 'Chemistry'),
+                      ),
+                    );
+                  }, ImagePath.chemistryImage, 'Chemistry'),
+                ],
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
-            _rowWidget(
-              image1: ImagePath.fruitImage,
-              image2: ImagePath.sportsImage,
-              title1: 'Fruits',
-              title2: 'Sports',
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _commonWidget(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contex) => const Question(category: 'Math'),
+                      ),
+                    );
+                  }, ImagePath.mathImage, 'Math'),
+                  _commonWidget(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contex) =>
+                            const Question(category: 'Biology'),
+                      ),
+                    );
+                  }, ImagePath.biologyImage, 'Biology'),
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            _rowWidget(
-              image1: ImagePath.objectsImage,
-              image2: ImagePath.randomImage,
-              title1: 'Objects',
-              title2: 'Random',
-            ),
+            // _rowWidget(
+            //   image1: ImagePath.physicsImage,
+            //   image2: ImagePath.chemistryImage,
+            //   title1: 'Physics',
+            //   title2: 'Chemistry',
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // _rowWidget(
+            //   image1: ImagePath.mathImage,
+            //   image2: ImagePath.biologyImage,
+            //   title1: 'Math',
+            //   title2: 'Biology',
+            // ),
           ],
         ),
       ),
@@ -85,90 +131,98 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           child: Center(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: SvgPicture.asset(
-                    ImagePath.quizImage,
-                    height: 50,
-                    width: 50,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 30,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: SvgPicture.asset(
+                      ImagePath.quizImage,
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Text(
-                    'QUIZ APP',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                  const SizedBox(
+                    width: 15,
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _rowWidget(
-      {required String image1,
-      required String image2,
-      required String title1,
-      required String title2}) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _commonWidget(image1, title1),
-              _commonWidget(image2, title2),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _commonWidget(String image, String title) {
-    return Material(
-      borderRadius: BorderRadius.circular(25),
-      elevation: 5,
-      child: Container(
-        width: 150,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: Column(
-          children: [
-            SvgPicture.asset(
-              image,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'QUIZ APP',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Widget _rowWidget(
+  //     {required String image1,
+  //     required String image2,
+  //     required String title1,
+  //     required String title2}) {
+  //   return Column(
+  //     children: [
+  //       Padding(
+  //         padding: const EdgeInsets.only(left: 20, right: 20),
+  //         child: Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //           children: [
+  //             _commonWidget(image1, title1),
+  //             _commonWidget(image2, title2),
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  Widget _commonWidget(VoidCallback onTap, String image, String title) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Material(
+        borderRadius: BorderRadius.circular(25),
+        elevation: 5,
+        child: Container(
+          width: 150,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                image,
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
